@@ -1,12 +1,13 @@
 export const invoice = {
   companyLogo: "https://example.com/logo.png",
   sellerDetails: {
-    name: "Seller Name",
+    name: "Varashidhi Silk Exports",
     address: {
-      street: "Seller Street",
+      street: "Sector 12A, Old Town Road",
       city: "Seller City",
       state: "Seller State",
       pincode: "123456",
+      country: "IN",
     },
     PAN: "AAAPL1234C",
     GSTRegistrationNo: "27ABCDE1234F2Z5",
@@ -19,6 +20,7 @@ export const invoice = {
       city: "Anytown",
       state: "AnyState",
       pincode: "987654",
+      country: "IN",
     },
     stateUTCode: "27",
   },

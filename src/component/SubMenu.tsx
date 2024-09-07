@@ -1,12 +1,61 @@
 import { useState } from "react";
 import Input from "./Input";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+import { toast } from "react-toastify";
 
-const SubMenu2 = ({ title = "seller" }) => {
-  //   console.log(title);
-
+const SubMenu2 = ({ title = "seller", invoiceData, setInvoiceData }) => {
   const [formData, setFormData] = useState({});
+  const [image, setImage] = useState(null);
+
+  const handleAdd = (e) => {
+    console.log(formData);
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+
+        const imageDiv = document.getElementById(
+          `${
+            event.target.name === "logo"
+              ? "brandLogo-container"
+              : "signature-container"
+          }`
+        );
+        if (imageDiv) {
+          imageDiv.innerHTML = `<img src="${reader.result}" alt="Company Logo" class="h-full p-1"" />`;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  const handlePrint = (e) => {
+    e.preventDefault();
+    const input = document.getElementById("invoice");
+    if (input) {
+      input.style.maxHeight = "none";
+      html2canvas(input, { scrollY: -window.scrollY }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        const pdf = new jsPDF("p", "mm", "a4");
+        const imgWidth = 210; // A4 width in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        // Add image to PDF
+        pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+        pdf.save("invoice.pdf");
+
+        // Restore original overflow style
+        input.style.maxHeight = "100vh";
+      });
+    }
+  };
   const handleChange = (e) => {
-    console.log(e.target.title);
+    // console.log(e.target.title);
+    // console.log(formData);
     setFormData((prev) => ({
       ...prev,
       [e.target.title]: e.target.value,
@@ -47,12 +96,12 @@ const SubMenu2 = ({ title = "seller" }) => {
     order: ["Order Number", "Order Date"],
     invoice: ["Invoice Number", "Invoice Details", "Invoice Date"],
     items: [
-      "Item Description",
-      "Item Unit Price",
-      "Item Quantity",
-      "Item Discount",
-      "Item Net Amount",
-      "Item Tax Rate",
+      "Description",
+      "Unit Price",
+      "Quantity",
+      "Discount",
+      "Net Amount",
+      "Tax Rate",
     ],
   };
   return (
@@ -61,18 +110,51 @@ const SubMenu2 = ({ title = "seller" }) => {
         {title} Info
       </h2>
 
-      <form>
+      <form onSubmit={handlePrint}>
         <div className="grid grid-cols-1 gap-2 mt-4">
           <div>
             {fieldLabels[title]?.map((label) => (
-              <Input key={label} title={label} onChange={handleChange} />
+              <Input
+                key={label}
+                title={label}
+                onChange={handleChange}
+                formData={formData}
+              />
             ))}
           </div>
+
+          {title === "seller" && (
+            <>
+              <div>
+                <input
+                  type="file"
+                  name="logo"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="mb-4"
+                />
+              </div>
+              <div>
+                <input
+                  type="file"
+                  name="signature"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="mb-4"
+                />
+              </div>
+            </>
+          )}
         </div>
 
-        <div className="flex justify-end mt-6">
+        <div className="flex justify-between mt-6">
+          {title === "items" && (
+            <button type="button" className="btn-primary" onClick={handleAdd}>
+              Add
+            </button>
+          )}
           <button type="submit" className="btn-primary">
-            Save
+            Print
           </button>
         </div>
       </form>

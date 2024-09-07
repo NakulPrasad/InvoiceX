@@ -1,11 +1,14 @@
 import Logo from "../assets/images/logo.png";
 import Table from "../component/Table";
-const Home = () => {
+const Home = ({ invoiceData }) => {
   return (
-    <section className="h-screen col-span-5 font-invoiceLite text-sm overflow-y-auto">
+    <section
+      id="invoice"
+      className="max-h-screen col-span-5 font-invoiceLite text-sm overflow-y-auto"
+    >
       <div className="grid py-10 px-14 gap-4">
         <div className="flex justify-between">
-          <div>
+          <div id="brandLogo-container" className="h-12">
             <img src={Logo} alt="Company Logo" className="h-full p-1" />
           </div>
           <div>
@@ -18,40 +21,58 @@ const Home = () => {
         <div className="flex justify-between">
           <div className=" ">
             <p className="font-invoiceBold">Sold By:</p>
-            <p id="sellerName">Varashidhi Silk Exports</p>
-            <p id="sellerAddress">Sector 12A, Old Town Road</p>
+            <p id="sellerName">{invoiceData.sellerDetails.name}</p>
+            <p id="sellerAddress">{invoiceData.sellerDetails.address.street}</p>
             <div className="flex">
-              <p id="sellerCity">BENGALURU</p>,<p id="sellerState">KARNATKA</p>,
-              <p id="sellerPincode">987654</p>
+              <p id="sellerCity">{invoiceData.sellerDetails.address.city}</p>,
+              <p id="sellerState">KARNATKA</p>,
+              <p id="sellerPincode">
+                {invoiceData.sellerDetails.address.pincode}
+              </p>
             </div>
-            <p id="sellerCountry">IN</p>
+            <p id="sellerCountry">
+              {invoiceData.sellerDetails.address.country}
+            </p>
           </div>
           <div className=" text-right">
             <p className="font-invoiceBold">Billing Address</p>
-            <p id="billingName">John Doe</p>
-            <p id="billingAddress">Eurofins It Solution, 1st Floor</p>
+            <p id="billingName">{invoiceData.billingDetails.name}</p>
+            <p id="billingAddress">
+              {invoiceData.billingDetails.address.street}
+            </p>
             <div className="flex">
-              <p id="billingCity">HYDERABAD</p>,
-              <p id="billingState">TELANGANA</p>,
-              <p id="billingPincode">560011</p>
+              <p id="billingCity">{invoiceData.billingDetails.address.city}</p>,
+              <p id="billingState">
+                {invoiceData.billingDetails.address.state}
+              </p>
+              ,
+              <p id="billingPincode">
+                {invoiceData.billingDetails.address.pincode}
+              </p>
             </div>
-            <p id="billingCountry">IN</p>
+            <p id="billingCountry">
+              {invoiceData.billingDetails.address.country}
+            </p>
           </div>
         </div>
         <div className="flex justify-between">
           <div className=" flex flex-col">
             <div className="flex">
               <p className="font-invoiceBold">PAN No:</p>
-              <p id="panNo.">AC45784AA</p>
+              <p id="panNo.">{invoiceData.sellerDetails.PAN}</p>
             </div>
             <div className="flex">
               <p className="font-invoiceBold">GST Registration No:</p>
-              <p id="gstRegistrationNo.">985697456</p>
+              <p id="gstRegistrationNo.">
+                {invoiceData.sellerDetails.GSTRegistrationNo}
+              </p>
             </div>
           </div>
           <div className="flex  text-right">
             <p className="font-invoiceBold">State/UTCode : </p>
-            <p id="billingState/UtCode">59</p>
+            <p id="billingState/UtCode">
+              {invoiceData.billingDetails.stateUTCode}
+            </p>
           </div>
         </div>
         <div className="flex justify-end">
@@ -75,7 +96,7 @@ const Home = () => {
             </div>
             <div className="flex justify-end">
               <p className="font-invoiceBold">Place of delivery : </p>
-              <p id="shippingPlaceOfDelivery">TELANGANA</p>
+              <p id="shippingState">TELANGANA</p>
             </div>
           </div>
         </div>
@@ -108,7 +129,7 @@ const Home = () => {
           </div>
         </div>
         <div>
-          <Table />
+          <Table invoiceData={invoiceData} />
           <p>Whether tax is payable under reverse charge - No</p>
         </div>
       </div>

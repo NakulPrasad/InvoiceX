@@ -2,7 +2,7 @@ import { useState } from "react";
 import SubMenu from "./SubMenu";
 import { toast } from "react-toastify";
 import IconButton from "./IconButton";
-import SubMenu2 from "./SubMenu2";
+import SubMenu2 from "./SubMenu";
 
 const Sidebar = () => {
   const [currentItem, setCurrentItem] = useState("seller");
@@ -13,7 +13,7 @@ const Sidebar = () => {
 
   return (
     <aside className="flex col-span-2">
-      <div className="flex flex-col items-center w-16 h-screen py-8 space-y-8 bg-white dark:bg-gray-900 dark:border-gray-700">
+      <div className="flex flex-col items-center w-16 h-screen py-8 space-y-8 bg-pink-100 dark:bg-gray-900 dark:border-gray-700">
         <button title="logo" type="button">
           <img
             className="w-auto h-6"

@@ -2,10 +2,13 @@
 @tailwind components;
 
 @font-face {
-  font-family: 'Amazon';
-  src: url('./assets/fonts/emberMedium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'AmazonLite';
+  src: url('./assets/fonts/invoice3.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AmazonBold';
+  src: url('./assets/fonts/invoiceLite.ttf') format('truetype');
 }
 
 
@@ -14,11 +17,11 @@
 }
 
 .btn-primary {
-  @apply px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600;
+  @apply px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-pink-600 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-pink-600;
 }
 
 .btn-secondary {
-  @apply bg-gray-200 border border-gray-300 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500;
+  @apply bg-pink-200 border border-pink-300 hover:bg-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-500;
 }
 
 .btn-success {
@@ -38,11 +41,11 @@
 }
 
 .btn-light {
-  @apply bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500;
+  @apply bg-pink-100 hover:bg-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500;
 }
 
 .btn-dark {
-  @apply bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800;
+  @apply bg-pink-800 hover:bg-pink-900 focus:outline-none focus:ring-2 focus:ring-pink-800;
 }
 
 .btn-icon {

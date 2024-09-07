@@ -1,0 +1,80 @@
+export const invoice = {
+  companyLogo: "https://example.com/logo.png",
+  sellerDetails: {
+    name: "Seller Name",
+    address: {
+      street: "Seller Street",
+      city: "Seller City",
+      state: "Seller State",
+      pincode: "123456",
+    },
+    PAN: "AAAPL1234C",
+    GSTRegistrationNo: "27ABCDE1234F2Z5",
+  },
+  placeOfSupply: "Maharashtra",
+  billingDetails: {
+    name: "John Doe",
+    address: {
+      street: "1234 Elm Street",
+      city: "Anytown",
+      state: "AnyState",
+      pincode: "987654",
+    },
+    stateUTCode: "27",
+  },
+  shippingDetails: {
+    name: "Jane Doe",
+    address: {
+      street: "5678 Maple Street",
+      city: "Somewhere",
+      state: "SomeState",
+      pincode: "543210",
+    },
+    stateUTCode: "09",
+  },
+  placeOfDelivery: "SomeState",
+  orderDetails: {
+    orderNumber: "ORD-123456789",
+    orderDate: "2024-09-07",
+  },
+  invoiceDetails: {
+    invoiceNumber: "INV-987654321",
+    invoiceDate: "2024-09-08",
+    reverseCharge: "No",
+  },
+  items: [
+    {
+      description: "Product 1",
+      unitPrice: 500,
+      quantity: 2,
+      discount: 50,
+      netAmount: 950,
+      taxRate: 18,
+      taxType: "IGST",
+      taxAmount: 171,
+      totalAmount: 1121,
+    },
+    {
+      description: "Product 2",
+      unitPrice: 300,
+      quantity: 3,
+      discount: 30,
+      netAmount: 870,
+      taxRate: 18,
+      taxType: "IGST",
+      taxAmount: 156.6,
+      totalAmount: 1026.6,
+    },
+  ],
+  totals: {
+    subtotal: 1820,
+    totalTax: 327.6,
+    grandTotal: 2147.6,
+    amountInWords: "Two Thousand One Hundred Forty-Seven and Sixty Cents",
+  },
+  sellerSignature: {
+    name: "Seller Name",
+    signatureImage: "https://example.com/signature.png",
+    authorisedSignatory: "Authorised Signatory",
+  },
+};

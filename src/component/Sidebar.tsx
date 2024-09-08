@@ -2,7 +2,7 @@ import { useState } from "react";
 import IconButton from "./IconButton";
 import SubMenu from "./SubMenu";
 
-const Sidebar = ({ invoiceData, setInvoiceData }) => {
+const Sidebar = () => {
   const [currentItem, setCurrentItem] = useState("seller");
   const handleClick = (e) => {
     setCurrentItem(e.currentTarget.name);
@@ -74,11 +74,7 @@ const Sidebar = ({ invoiceData, setInvoiceData }) => {
       </div>
 
       {/* <SubMenu props={currentItem} /> */}
-      <SubMenu
-        title={currentItem}
-        invoiceData={invoiceData}
-        setInvoiceData={setInvoiceData}
-      />
+      <SubMenu title={currentItem} />
     </aside>
   );
 };

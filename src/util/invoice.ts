@@ -44,7 +44,7 @@ export const invoice = {
     invoiceDate: "2024-09-08",
     reverseCharge: "No",
   },
-  items: [
+  itemsDetails: [
     {
       description: "Product 1",
       unitPrice: 500,

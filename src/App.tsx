@@ -7,7 +7,7 @@ const App = () => {
   const [invoiceData, setInvoiceData] = useState(invoice);
   return (
     <section id="main" className="grid grid-cols-7">
-      <Sidebar invoiceData={invoiceData} setInvoiceData={setInvoiceData} />
+      <Sidebar />
       <Home invoiceData={invoiceData} />
     </section>
   );

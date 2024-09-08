@@ -4,9 +4,9 @@ const Home = ({ invoiceData }) => {
   return (
     <section
       id="invoice"
-      className="max-h-screen col-span-5 font-invoiceLite text-sm overflow-y-auto"
+      className="max-h-screen w-full col-span-5 font-invoiceLite text-sm overflow-auto"
     >
-      <div className="grid py-10 px-14 gap-4">
+      <div className="grid py-5 md:py-10 px-4 md:px-14 gap-4">
         <div className="flex justify-between">
           <div id="brandLogo-container" className="h-12">
             <img src={Logo} alt="Company Logo" className="h-full p-1" />
